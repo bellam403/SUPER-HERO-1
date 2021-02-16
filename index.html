@@ -1,0 +1,100 @@
+<html>
+    <head>
+        <title>SUPER-HERO</title>
+    </head>
+    <style>
+        body{
+            background-image: url("./wallpaper.jpg");
+            text-align: center;
+        }
+
+        #b1 {
+          background-color: blue;
+        }
+
+        #b2 {
+          background-color: red;
+        }
+
+        #myCanvas {
+            background-color: white;
+            height: 500px;
+            width: 1000px;
+            border-top: blue;
+            border-bottom: red;
+            border-left: green;
+            border-right: yellow;
+            border-style: dotted;
+            border-width: 30px;
+        }
+
+        span {
+            background-color: black;
+            color: white;
+        }
+    </style>
+    <script>
+        var canvas = new fabric.Canvas('myCanvas');
+
+player_x = 10;
+player_y = 10;
+
+block_image_width = 30;
+block_image_height = 30;
+
+var player_object= "";
+var block_image_object= "";
+
+function player_update()
+{
+	fabric.Image.fromURL("./STEVE.jpg", function(Img) {
+	player_object = Img;
+
+	player_object.scaleToWidth(150);
+	player_object.scaleToHeight(140);
+	player_object.set({
+	top:player_y,
+	left:player_x
+	});
+	canvas.add(player_object);
+
+	});
+}
+
+function new_image(get_image)
+{
+	fabric.Image.fromURL(get_image, function(Img) {
+	block_image_object = Img;
+
+	block_image_object.scaleToWidth(block_image_width);
+	block_image_object.scaleToHeight(block_image_height);
+	block_image_object.set({
+	top:player_y,
+	left:player_x
+	});
+	canvas.add(block_image_object);
+
+	});
+
+}
+    </script>
+
+    <body>
+        <div>
+        <button id="b1">
+            <h1>SUPER-HERO</h1>
+        </button>
+        </div>
+        <br>
+        <div>
+        <button id="b2">
+            <h2>
+                Current-Height : <span id="s1">30</span>
+                Current-Width : <span id="s2">30</span>
+            </h2>
+        </button>
+        </div>
+        <br>
+        <canvas id="myCanvas"></canvas>
+    </body>
+</html>
